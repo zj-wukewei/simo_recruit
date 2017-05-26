@@ -29,7 +29,9 @@ export const loginReducer = (state: Object = fromJS(initialState), action: Objec
         case types.LOGIN_FAIL:
             console.log("Login fail!");
             return state;
-        case: types.CHANGE_PASSWORD_SUCCESS:
+        case:
+            types.CHANGE_PASSWORD_SUCCESS
+        :
             sole.log("changepassword success! Set token: " + action.token);
             state = state.set("loginSuccess", action.loginSuccess);
             TokenManager.set(action.token);
