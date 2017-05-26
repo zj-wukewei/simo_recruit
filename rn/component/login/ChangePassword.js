@@ -70,7 +70,7 @@ class ChangePassword extends Component {
                             style={styles.form}
                             maxLength={20}
                             secureTextEntry={true}
-                            placeholder="输入密码"
+                            placeholder="请输入6~20位数字、字母密码"
                             placeholderTextColor="#616161"
                             underlineColorAndroid="transparent"/>
                     </View>
