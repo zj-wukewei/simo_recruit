@@ -11,7 +11,7 @@ import ToasUtil from "../utils/ToasUtil";
 
 const dimen = Dimensions.get('window');
 const client = axios.create({
-    baseURL: 'http://192.168.3.19:8086/simo/',
+    baseURL: 'http://60.190.233.23:8086/simo',
     timeout: 20000,
     headers: {
         'APP-ID': Platform.OS === 'android' ? '2' : '1',
@@ -37,7 +37,7 @@ client.interceptors.request.use(config => {
 });
 client.interceptors.response.use(response => {
     console.log('[axios] ---Response received---');
-    console.log('[axios] response:')
+    console.log('[axios] response:');
     console.log(response.data);
     console.log('[axios] (end)');
     return response;

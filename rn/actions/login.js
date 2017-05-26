@@ -16,14 +16,14 @@ export const thunkLogin = (name: string, pwd: string) => {
         )
         ;
     }
-}
+};
 
-const loginResponse = (longinResponse: SimoResponse) => {
+const loginResponse = (loginResponse: SimoResponse) => {
     return {
         type: types.LOGIN_SUCCESS,
-        token: longinResponse.data.token,
-        userId: longinResponse.data.userId,
-        groupId: longinResponse.data.groupId,
+        token: loginResponse.data.token,
+        userId: loginResponse.data.userId,
+        groupId: loginResponse.data.groupId,
         loginSuccess: true
     }
 };
@@ -45,7 +45,7 @@ export const thunkChangePassword = (pwd: string) => {
                 dispatchResponse(response, dispatch, changePasswordResponse)
             );
     }
-}
+};
 
 const changePasswordResponse = (changeResponse: SimoResponse) => {
     return {
@@ -53,6 +53,6 @@ const changePasswordResponse = (changeResponse: SimoResponse) => {
         token: changeResponse.data.token,
         userId: changeResponse.data.userId,
         groupId: changeResponse.data.groupId,
-        loginSuccess: true
+        changePwdSuccess: true
     }
 };

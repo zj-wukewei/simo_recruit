@@ -9,6 +9,7 @@ import {Colors, Dimens} from "../../assets/Attrs";
 import Button from "../widget/Button";
 import ToasUtil from "../../utils/ToasUtil";
 import SimoUtils from "../../utils/SimoUtils";
+import UserSystem from "../../constants/UserSystem";
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
@@ -38,10 +39,7 @@ class Login extends Component {
     }
 
     _onLoginPress() {
-        console.log(this.props);
-        const {navigate} = this.props.navigation;
-        navigate('ChangePassword');
-        return;
+
         if (!SimoUtils.checkEmail(this.state.email)) {
             ToasUtil.showShort("请输入正确的邮箱格式");
             return;
@@ -50,17 +48,27 @@ class Login extends Component {
             ToasUtil.showShort("请输入6~20位数字、字母密码");
             return;
         }
-        this.props.loginCallback(this.state.email, this.state.password);
+      this.props.loginCallback(this.state.email, this.state.password);
+    }
+
+    componentDidMount() {
+        const isLogin = UserSystem.getIslogin();
+        if(isLogin) {
+          ToasUtil.showShort("去首页");
+          return;
+        }
     }
 
     componentWillReceiveProps(nextProps) {
-        const loginSuccess = nextProps.loginSuccess;
-        console.log("Login componentWillReceiveProps");
+      const loginSuccess = nextProps.loginSuccess;
+      const {navigate} = this.props.navigation;
+      console.log("Login componentWillReceiveProps");
         if (loginSuccess) {
             if (this.state.password === '123456') {
-                ToasUtil.showShort("修改密码");
+              UserSystem.setIslogin('true');
+              navigate('ChangePassword');
             } else {
-                ToasUtil.showShort("去首页");
+              ToasUtil.showShort("去首页");
             }
         }
     }

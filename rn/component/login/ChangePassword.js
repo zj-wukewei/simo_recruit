@@ -40,6 +40,17 @@ class ChangePassword extends Component {
             ToasUtil.showShort("密码不能为123456");
             return;
         }
+        this.props.changePasswordCallback(this.state.password);
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+      const changePwdSuccess = nextProps.changePwdSuccess;
+      const {navigate} = this.props.navigation;
+      console.log("changePwdSuccess componentWillReceiveProps");
+      if (changePwdSuccess) {
+          ToasUtil.showShort("去首页");
+      }
     }
 
     render() {
