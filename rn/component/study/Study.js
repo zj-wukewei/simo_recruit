@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react";
-import {Text, Image} from "react-native";
+import {Image, Text} from "react-native";
 
 class Study extends Component {
     static navigationOptions = {

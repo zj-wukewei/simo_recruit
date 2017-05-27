@@ -10,7 +10,7 @@ import Button from "../widget/Button";
 import ToastUtil from "../../utils/ToastUtil";
 import SimoUtils from "../../utils/SimoUtils";
 import UserSystem from "../../constants/UserSystem";
-import NavigationUtil from '../../utils/NavigationUtil';
+import NavigationUtil from "../../utils/NavigationUtil";
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;

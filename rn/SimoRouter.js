@@ -13,7 +13,6 @@ import User from "./component/user/User";
 import Question from "./component/question/Question";
 import Experience from "./component/experience/Experience";
 import React from "react";
-import {Image} from "react-native";
 import {Colors} from "./assets/Attrs";
 
 const Tab = TabNavigator(

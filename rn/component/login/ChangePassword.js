@@ -45,12 +45,12 @@ class ChangePassword extends Component {
 
 
     componentWillReceiveProps(nextProps) {
-      const changePwdSuccess = nextProps.changePwdSuccess;
-      const {navigate} = this.props.navigation;
-      console.log("changePwdSuccess componentWillReceiveProps");
-      if (changePwdSuccess) {
-          ToasUtil.showShort("去首页");
-      }
+        const changePwdSuccess = nextProps.changePwdSuccess;
+        const {navigate} = this.props.navigation;
+        console.log("changePwdSuccess componentWillReceiveProps");
+        if (changePwdSuccess) {
+            ToasUtil.showShort("去首页");
+        }
     }
 
     render() {
