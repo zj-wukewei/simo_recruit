@@ -7,9 +7,10 @@ import React, {Component} from "react";
 import {Dimensions, Image, StyleSheet, TextInput, View} from "react-native";
 import {Colors, Dimens} from "../../assets/Attrs";
 import Button from "../widget/Button";
-import ToasUtil from "../../utils/ToasUtil";
+import ToastUtil from "../../utils/ToastUtil";
 import SimoUtils from "../../utils/SimoUtils";
 import UserSystem from "../../constants/UserSystem";
+import NavigationUtil from '../../utils/NavigationUtil';
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
@@ -39,36 +40,37 @@ class Login extends Component {
     }
 
     _onLoginPress() {
-
+        NavigationUtil.reset(this.props.navigation, 'Home')
+        return;
         if (!SimoUtils.checkEmail(this.state.email)) {
-            ToasUtil.showShort("请输入正确的邮箱格式");
+            ToastUtil.showShort("请输入正确的邮箱格式");
             return;
         }
         if (this.state.password.length < 6) {
-            ToasUtil.showShort("请输入6~20位数字、字母密码");
+            ToastUtil.showShort("请输入6~20位数字、字母密码");
             return;
         }
-      this.props.loginCallback(this.state.email, this.state.password);
+        this.props.loginCallback(this.state.email, this.state.password);
     }
 
     componentDidMount() {
         const isLogin = UserSystem.getIslogin();
-        if(isLogin) {
-          ToasUtil.showShort("去首页");
-          return;
+        if (isLogin) {
+            NavigationUtil.reset(this.props.navigation, 'Home')
+            return;
         }
     }
 
     componentWillReceiveProps(nextProps) {
-      const loginSuccess = nextProps.loginSuccess;
-      const {navigate} = this.props.navigation;
-      console.log("Login componentWillReceiveProps");
+        const loginSuccess = nextProps.loginSuccess;
+        const {navigate} = this.props.navigation;
+        console.log("Login componentWillReceiveProps");
         if (loginSuccess) {
             if (this.state.password === '123456') {
-              UserSystem.setIslogin('true');
-              navigate('ChangePassword');
+                navigate('ChangePassword');
             } else {
-              ToasUtil.showShort("去首页");
+                UserSystem.setIslogin('true');
+                NavigationUtil.reset(navigate, 'Home')
             }
         }
     }

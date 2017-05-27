@@ -7,7 +7,7 @@ import React, {Component} from "react";
 import {Dimensions, Image, StyleSheet, Text, TextInput, View} from "react-native";
 import {Colors, Dimens} from "../../assets/Attrs";
 import Button from "../widget/Button";
-import ToasUtil from "../../utils/ToasUtil";
+import ToastUtil from "../../utils/ToastUtil";
 
 const maxWidth = Dimensions.get('window').width;
 
@@ -33,11 +33,11 @@ class ChangePassword extends Component {
 
     _onLoginPress() {
         if (this.state.password.length < 6) {
-            ToasUtil.showShort("请输入6~20位数字、字母密码");
+            ToastUtil.showShort("请输入6~20位数字、字母密码");
             return;
         }
         if (this.state.password === "123456") {
-            ToasUtil.showShort("密码不能为123456");
+            ToastUtil.showShort("密码不能为123456");
             return;
         }
         this.props.changePasswordCallback(this.state.password);

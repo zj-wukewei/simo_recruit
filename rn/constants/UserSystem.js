@@ -72,7 +72,7 @@ const UserSystem = {
         return groupid;
     },
     setGroupid: function (g: string): void {
-        if (e !== groupid) {
+        if (g !== groupid) {
             groupid = g;
             AsyncStorage.setItem(groupidKey, groupid);
         }

@@ -5,6 +5,7 @@
 
 import React, {Component} from "react";
 import {Dimensions, Image} from "react-native";
+import NavigationUtil from '../utils/NavigationUtil';
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
@@ -15,9 +16,8 @@ class Splash extends Component {
     };
 
     componentDidMount() {
-        const {navigate} = this.props.navigation;
         setTimeout(() => {
-            navigate('Login');
+            NavigationUtil.reset(this.props.navigation, 'Login');
         }, 2000);
     }
 

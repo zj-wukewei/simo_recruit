@@ -7,11 +7,11 @@ import axios from "axios";
 import {Dimensions, Platform} from "react-native";
 import TokenManager from "../stores/token";
 import type {Response, SimoResponse} from "../flowtype";
-import ToasUtil from "../utils/ToasUtil";
+import ToasUtil from "../utils/ToastUtil";
 
 const dimen = Dimensions.get('window');
 const client = axios.create({
-    baseURL: 'http://60.190.233.23:8086/simo',
+    baseURL: 'http://192.168.3.19:8086/simo',
     timeout: 20000,
     headers: {
         'APP-ID': Platform.OS === 'android' ? '2' : '1',
