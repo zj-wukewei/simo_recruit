@@ -50,15 +50,37 @@ client.interceptors.response.use(response => {
 });
 export const apiURL = {
     login: '/user/login/',
+    getProjectList: 'project/getProjectLis',
+    getStudyList: 'study/getStudyList',
     changePassword: 'user/changePassword/',
 };
 export function login(email: string, pwd: string): Promise<Response> {
     return client.get(apiURL.login + email + "/" + pwd).catch(error => {
     });
-};
+}
 
 export function changePassword(newpwd: string): Promise<Response> {
     return client.get(apiURL.changePassword + newpwd).catch(error => {
+    });
+}
+
+export function getProjectList(pn : string, popleGroup: string, sicknessStatus : string, sicknessType : string, searchContent: string) {
+    return client.post(apiURL.getProjectList, {
+        start: pn,
+        key_Words:searchContent,
+        people_group: popleGroup,
+        sickness_Status: sicknessStatus,
+        sickness_type: sicknessType
+    }).catch(error => {
+    });
+}
+
+export function getStudyList(pn: string, searchContent: string, studyType: string) {
+    return client.post(apiURL.getStudyList, {
+      start: pn,
+      key_Words: searchContent,
+      study_type: studyType
+    }).catch(error => {
     });
 }
 

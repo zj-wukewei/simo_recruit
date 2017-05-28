@@ -5,10 +5,12 @@
 
 import {combineReducers} from "redux-immutable";
 import {mainReducer, loginReducer} from "./mainReducer";
+import {projectListReducer} from "./homeReducer";
 
 const rootReducer = combineReducers({
     mainReducer,
-    loginReducer
+    loginReducer,
+    projectListReducer
 });
 
 export default rootReducer ;

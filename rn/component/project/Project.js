@@ -4,29 +4,28 @@
 
 import React, {Component} from "react";
 import {Image, Text} from "react-native";
+import type {Project} from "../../flowtype";
+
+type Props = {
+  list: Array<Project>,
+  hasMore: boolean,
+  loginCallback: (pn: string, popleGroup: string, sicknessStatus: string,
+                  sicknessType: string, searchContent: string) => void
+};
 
 class Project extends Component {
 
-    static navigationOptions = {
-        title: '项目',
-        tabBarIcon: ({tintColor}) => (
-            <Image
-                source={require('../../assets/home.png')}
-                style={[{
-                    width: 25,
-                    height: 25
-                }, {tintColor: tintColor}]}
-            />
-        )
-    };
+  constructor(props: Props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <Text>
-                this is a project
-            </Text>
-        )
-    }
+  render() {
+    return (
+      <Text>
+        this is a project
+      </Text>
+    )
+  }
 }
 
 export default Project;
