@@ -31,7 +31,7 @@ class Login extends Component {
         password: string
     };
 
-    constructor(props: Props) {
+    constructor(props: Object) {
         super(props);
         this.state = {
             email: "",
@@ -40,8 +40,6 @@ class Login extends Component {
     }
 
     _onLoginPress() {
-        NavigationUtil.reset(this.props.navigation, 'Home')
-        return;
         if (!SimoUtils.checkEmail(this.state.email)) {
             ToastUtil.showShort("请输入正确的邮箱格式");
             return;
@@ -56,12 +54,11 @@ class Login extends Component {
     componentDidMount() {
         const isLogin = UserSystem.getIslogin();
         if (isLogin) {
-            NavigationUtil.reset(this.props.navigation, 'Home')
-            return;
+            NavigationUtil.reset(this.props.navigation, 'Home');
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: Props) {
         const loginSuccess = nextProps.loginSuccess;
         const {navigate} = this.props.navigation;
         console.log("Login componentWillReceiveProps");

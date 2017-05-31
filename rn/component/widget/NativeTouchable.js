@@ -6,11 +6,11 @@
 import React, {Component}from 'react';
 import {Platform} from 'react-native';
 import {
-    TouchableHighlight,
-    TouchableNativeFeedback
+  TouchableHighlight,
+  TouchableNativeFeedback
 } from 'react-native';
 let NativeTouchable = TouchableHighlight;
 if (Platform.OS === 'android') {
-    NativeTouchable = TouchableNativeFeedback;
+  NativeTouchable = TouchableNativeFeedback;
 }
 export default NativeTouchable;

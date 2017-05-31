@@ -4,6 +4,7 @@
  */
 
 import React, {Component} from 'react';
+import {Image} from "react-native";
 import {connect} from 'react-redux';
 import Project from '../component/project/Project';
 import {
@@ -42,8 +43,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    projectListCallback: (pn : string, popleGroup: string, sicknessStatus : string,
-                    sicknessType : string, searchContent: string) => {
+    projectListCallback: (pn: string, popleGroup: string, sicknessStatus: string,
+                          sicknessType: string, searchContent: string) => {
       dispatch(thunkGetProjectList(pn, popleGroup, sicknessStatus, sicknessType, searchContent));
     }
   }

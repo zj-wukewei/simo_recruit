@@ -5,7 +5,7 @@
 
 
 export type Response = {
-  data: PetLoverResponse,
+  data: SimoResponse,
   status: number,
   statusText: string
 };

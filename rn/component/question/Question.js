@@ -7,26 +7,26 @@ import {Image, Text} from "react-native";
 
 class Question extends Component {
 
-    static navigationOptions = {
-        title: '问答',
-        tabBarIcon: ({focused, tintColor}) => (
-            <Image
-                source={require('../../assets/question.png')}
-                style={[{
-                    width: 25,
-                    height: 25
-                }, {tintColor: tintColor}]}
-            />
-        )
-    };
+  static navigationOptions = {
+    title: '问答',
+    tabBarIcon: ({focused, tintColor}) => (
+      <Image
+        source={require('../../assets/question.png')}
+        style={[{
+          width: 25,
+          height: 25
+        }, {tintColor: tintColor}]}
+      />
+    )
+  };
 
-    render() {
-        return (
-            <Text>
-                this is a Question
-            </Text>
-        )
-    }
+  render() {
+    return (
+      <Text>
+        this is a Question
+      </Text>
+    )
+  }
 }
 
 export default Question;

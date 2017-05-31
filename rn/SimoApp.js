@@ -10,9 +10,9 @@ import configureStore from "./stores/configure-store";
 const store = configureStore();
 
 const SimoApp = () => (
-    <Provider store={store}>
-        <SimoRouter />
-    </Provider>
+  <Provider store={store}>
+    <SimoRouter />
+  </Provider>
 );
 
 export default SimoApp;

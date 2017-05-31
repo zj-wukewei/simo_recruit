@@ -9,13 +9,13 @@ import type {Project} from "../../flowtype";
 type Props = {
   list: Array<Project>,
   hasMore: boolean,
-  loginCallback: (pn: string, popleGroup: string, sicknessStatus: string,
-                  sicknessType: string, searchContent: string) => void
+  projectListCallback: (pn: string, popleGroup: string, sicknessStatus: string,
+                        sicknessType: string, searchContent: string) => void
 };
 
 class Project extends Component {
 
-  constructor(props: Props) {
+  constructor(props: Object) {
     super(props);
   }
 

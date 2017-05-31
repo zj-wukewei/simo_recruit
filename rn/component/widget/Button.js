@@ -1,6 +1,5 @@
 /**
  * Created by hzwukewei on 2017-5-25.
- * @flow
  */
 
 import React, {PropTypes} from "react";

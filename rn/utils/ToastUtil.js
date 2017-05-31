@@ -5,7 +5,7 @@
 
 import { Alert, ToastAndroid, Platform } from 'react-native';
 
-const showShort = (content, isAlert) => {
+const showShort = (content: string, isAlert: boolean) => {
     if (!content) {
         return;
     }
@@ -16,7 +16,7 @@ const showShort = (content, isAlert) => {
     }
 };
 
-const showLong = (content, isAlert) => {
+const showLong = (content: string, isAlert: boolean) => {
     if (isAlert || Platform.OS === 'ios') {
         Alert.alert('提示', content.toString());
     } else {

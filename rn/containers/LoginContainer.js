@@ -6,24 +6,24 @@
 import {connect} from 'react-redux';
 import Login from '../component/login/Login';
 import {
-    thunkLogin
+  thunkLogin
 } from '../actions/login';
 
 const mapStateToProps = (state) => {
-    return {
-        loginSuccess: state.get('loginReducer').get('loginSuccess')
-    };
+  return {
+    loginSuccess: state.get('loginReducer').get('loginSuccess')
+  };
 };
 const mapDispatchToProps = (dispatch) => {
-    return {
-        loginCallback: (name: string, pwd: string) => {
-            dispatch(thunkLogin(name, pwd));
-        }
+  return {
+    loginCallback: (name: string, pwd: string) => {
+      dispatch(thunkLogin(name, pwd));
     }
+  }
 };
 const LoginContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Login);
 
 export default LoginContainer;
