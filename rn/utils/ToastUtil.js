@@ -1,11 +1,10 @@
 /**
  * Created by hzwukewei on 2017-5-25.
- * @flow
  */
 
 import { Alert, ToastAndroid, Platform } from 'react-native';
 
-const showShort = (content: string, isAlert: boolean) => {
+const showShort = (content, isAlert) => {
     if (!content) {
         return;
     }
@@ -16,7 +15,7 @@ const showShort = (content: string, isAlert: boolean) => {
     }
 };
 
-const showLong = (content: string, isAlert: boolean) => {
+const showLong = (content, isAlert) => {
     if (isAlert || Platform.OS === 'ios') {
         Alert.alert('提示', content.toString());
     } else {
