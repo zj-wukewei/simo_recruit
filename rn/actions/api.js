@@ -9,21 +9,22 @@ import TokenManager from "../stores/token";
 import type {Response, SimoResponse} from "../flowtype";
 import ToastUtil from "../utils/ToastUtil";
 
-const dimen = Dimensions.get('window');
+const dimensions = Dimensions.get('window');
 const client = axios.create({
-  baseURL: 'http://192.168.3.19:8086/simo',
+  baseURL: 'http://60.190.233.23:8086/simo',
   timeout: 20000,
   headers: {
     'APP-ID': Platform.OS === 'android' ? '2' : '1',
     'APP-MODEL': Platform.OS === 'android' ? 'android' : 'ios',
     'APP-VERSION': '1.0.0',
-    'SCREEN-WIDTH': dimen.width.toString(),
-    'SCREEN-HEIGHT': dimen.height.toString(),
+    'SCREEN-WIDTH': dimensions.width.toString(),
+    'SCREEN-HEIGHT': dimensions.height.toString(),
     'Accept-Language': 'zh'
   }
 });
 client.interceptors.request.use(config => {
-  let token = TokenManager.get();
+  // let token = TokenManager.get();
+  let token = 'MTIyMzM0QDE2My5jb206MTUwNTE4MTYzODIzODozYjc2YWQ1ODE3ZjFjNzZhMjRhOGY3ODI0ZmFhMzEwNg';
   if (token) {
     config.headers['TOKEN'] = token
   }
@@ -50,7 +51,7 @@ client.interceptors.response.use(response => {
 });
 export const apiURL = {
   login: '/user/login/',
-  getProjectList: 'project/getProjectLis',
+  getProjectList: 'project/getProjectList',
   getStudyList: 'study/getStudyList',
   changePassword: 'user/changePassword/',
 };
@@ -64,7 +65,7 @@ export function changePassword(newpwd: string): Promise<Response> {
   });
 }
 
-export function getProjectList(pn: string, popleGroup: string, sicknessStatus: string, sicknessType: string, searchContent: string) {
+export function projectLists(pn: string, popleGroup: string, sicknessStatus: string, sicknessType: string, searchContent: string) {
   return client.post(apiURL.getProjectList, {
     start: pn,
     key_Words: searchContent,

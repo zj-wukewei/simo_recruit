@@ -17,4 +17,4 @@ export const Colors = {
     whiteBackgroundColor: '#FFFFFF',
     indowBackgroundColor: '#F8F9F9',
     transparent: '#FFFFFFFF',
-}
+};

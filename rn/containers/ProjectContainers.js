@@ -18,7 +18,7 @@ class ProjectContainers extends Component {
     title: '项目',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../../assets/home.png')}
+        source={require('../assets/home.png')}
         style={[{
           width: 25,
           height: 25
@@ -37,13 +37,14 @@ class ProjectContainers extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.get('projectListReducer').get('list'),
+    list: state.get('projectListReducer').get('list').toArray(),
     hasMore: state.get('projectListReducer').get('hasMore'),
+    isLoading: state.get('projectListReducer').get('isLoading'),
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    projectListCallback: (pn: string, popleGroup: string, sicknessStatus: string,
+    projectListsCallback: (pn: string, popleGroup: string, sicknessStatus: string,
                           sicknessType: string, searchContent: string) => {
       dispatch(thunkGetProjectList(pn, popleGroup, sicknessStatus, sicknessType, searchContent));
     }

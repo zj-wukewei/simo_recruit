@@ -4,11 +4,9 @@
  */
 
 import React, {Component} from "react";
-import {Dimensions, Image} from "react-native";
+import {Image} from "react-native";
 import NavigationUtil from '../utils/NavigationUtil';
 
-const maxHeight = Dimensions.get('window').height;
-const maxWidth = Dimensions.get('window').width;
 
 class Splash extends Component {
   static navigationOptions = {
@@ -17,7 +15,7 @@ class Splash extends Component {
 
   componentDidMount() {
     setTimeout(() => {
-      NavigationUtil.reset(this.props.navigation, 'Login');
+      NavigationUtil.reset(this.props.navigation, 'Home');
     }, 2000);
   }
 
@@ -29,7 +27,7 @@ class Splash extends Component {
           alignItems: 'center',
           justifyContent: 'center',
           width: null,
-          width: null,
+          height: null,
         }}
         source={ require('../assets/ic_splash.png')}/>
     );

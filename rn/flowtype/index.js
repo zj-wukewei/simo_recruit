@@ -16,7 +16,7 @@ export type SimoResponse = {
   time: number
 };
 
-export type Project = {
+export type ProjectEntity = {
   project_id: string,
   sickness_name: string,
   sickness_type: string

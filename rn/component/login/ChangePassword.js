@@ -71,7 +71,7 @@ class ChangePassword extends Component {
           </View>
         </Image>
         <View style={styles.formRoot}>
-          <View style={styles.textInputBackgroud}>
+          <View style={styles.textInputBackground}>
 
             <Image
               style={styles.logoEmail}
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 17,
   },
-  textInputBackgroud: {
+  textInputBackground: {
     paddingLeft: 15,
     paddingRight: 15,
     alignItems: 'center',

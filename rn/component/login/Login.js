@@ -17,7 +17,7 @@ const maxWidth = Dimensions.get('window').width;
 
 type Props = {
   loginSuccess: boolean,
-  loginCallback: (name: string, pwd: string) => void
+  loginCallback: (name: string, pwd: string) => void,
 };
 
 
@@ -58,7 +58,7 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  componentWillReceiveProps(nextProps: Object) {
     const loginSuccess = nextProps.loginSuccess;
     const {navigate} = this.props.navigation;
     console.log("Login componentWillReceiveProps");
@@ -66,8 +66,8 @@ class Login extends Component {
       if (this.state.password === '123456') {
         navigate('ChangePassword');
       } else {
-        UserSystem.setIslogin('true');
-        NavigationUtil.reset(navigate, 'Home')
+        // UserSystem.setIslogin('true');
+        NavigationUtil.reset(this.props.navigation, 'Home')
       }
     }
   }
@@ -86,9 +86,9 @@ class Login extends Component {
             source={require('../../assets/ic_simo_small.png')}/>
 
           <View style={styles.formRoot}>
-            <View style={styles.formBackgroud}>
+            <View style={styles.formBackground}>
 
-              <View style={styles.textInputBackgroud}>
+              <View style={styles.textInputBackground}>
 
                 <Image
                   style={styles.logoEmail}
@@ -106,7 +106,7 @@ class Login extends Component {
                 backgroundColor: "#dce1eb"
               }}/>
 
-              <View style={styles.textInputBackgroud}>
+              <View style={styles.textInputBackground}>
 
                 <Image
                   style={styles.logoEmail}
@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
     width: 16,
     height: 17,
   },
-  textInputBackgroud: {
+  textInputBackground: {
     marginLeft: 15,
     marginRight: 15,
     alignItems: 'center',
     flexDirection: 'row'
   },
-  formBackgroud: {
+  formBackground: {
     marginTop: 32,
     backgroundColor: "#ffffff",
     opacity: 0.8,
