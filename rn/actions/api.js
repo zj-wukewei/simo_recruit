@@ -6,12 +6,13 @@
 import axios from "axios";
 import {Dimensions, Platform} from "react-native";
 import TokenManager from "../stores/token";
+import * as types from "../constants/ActionTypes";
 import type {Response, SimoResponse} from "../flowtype";
 import ToastUtil from "../utils/ToastUtil";
 
 const dimensions = Dimensions.get('window');
 const client = axios.create({
-  baseURL: 'http://60.190.233.23:8086/simo',
+  baseURL: 'http://192.168.3.19:8086/simo',
   timeout: 20000,
   headers: {
     'APP-ID': Platform.OS === 'android' ? '2' : '1',
@@ -24,7 +25,7 @@ const client = axios.create({
 });
 client.interceptors.request.use(config => {
   // let token = TokenManager.get();
-  let token = 'MTIyMzM0QDE2My5jb206MTUwNTE4MTYzODIzODozYjc2YWQ1ODE3ZjFjNzZhMjRhOGY3ODI0ZmFhMzEwNg';
+  let token = 'MTIyMzM0QDE2My5jb206MTUwNjQzNTE0OTYxODo1NmU4NmY2NzM5NWZmNzdmNDQzNDU5YTNlNjZmMTEwOA';
   if (token) {
     config.headers['TOKEN'] = token
   }
@@ -92,6 +93,14 @@ export function dispatchResponse(response: Response,
   if (response) {
     if (response.data && response.data.statusCode === 0) {
       dispatch(sAction(response.data));
+      return;
+    }
+
+    if (response.data && response.data.statusCode === -1010) {
+      // 重新登录
+      dispatch({
+        type: types.REST_LOGIN
+      });
       return;
     }
   }

@@ -7,8 +7,12 @@ import TokenManager from "../stores/token";
 import UserSystem from "../constants/UserSystem";
 import * as types from "../constants/ActionTypes";
 
+
 export const mainReducer = (state: Object = Map(), action: Object) => {
   switch (action.type) {
+    case types.REST_LOGIN:
+      console.log("rest_login");
+      return state;
     default:
       return state;
   }
@@ -50,6 +54,7 @@ export const loginReducer = (state: Object = fromJS(initialState), action: Objec
       UserSystem.setUid(action.userId);
       UserSystem.setGroupid(action.groupId);
       TokenManager.set(action.token);
+      return state;
     default:
       return state;
   }

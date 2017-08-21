@@ -15,6 +15,6 @@ export const Colors = {
     colorPrimaryDark: '#347EE4',
     textColorPrimary: '#4e4e4e',
     whiteBackgroundColor: '#FFFFFF',
-    indowBackgroundColor: '#F8F9F9',
+    windowBackgroundColor: '#F8F9F9',
     transparent: '#FFFFFFFF',
 };

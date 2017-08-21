@@ -19,6 +19,9 @@ export type SimoResponse = {
 export type ProjectEntity = {
   project_id: string,
   sickness_name: string,
-  sickness_type: string
-
+  sickness_type: string,
+  experiment_title: string,
+  bid_name: string,
+  drug_name: string,
+  sickness_status: boolean
 };

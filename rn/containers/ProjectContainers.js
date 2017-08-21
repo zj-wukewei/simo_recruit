@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    projectListsCallback: (pn: string, popleGroup: string, sicknessStatus: string,
+    projectListsCallback: (pn: number, popleGroup: string, sicknessStatus: string,
                           sicknessType: string, searchContent: string) => {
       dispatch(thunkGetProjectList(pn, popleGroup, sicknessStatus, sicknessType, searchContent));
     }

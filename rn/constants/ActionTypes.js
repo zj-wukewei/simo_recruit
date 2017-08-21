@@ -3,6 +3,7 @@
  */
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const REST_LOGIN = 'LOGIN_SUCCESS';
 export const CHANGE_PASSWORD_SUCCESS = 'CHANGE_PASSWORD_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 

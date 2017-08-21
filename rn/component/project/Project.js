@@ -7,14 +7,15 @@ import {Text, View, FlatList, ActivityIndicator, StyleSheet} from "react-native"
 import type {ProjectEntity} from "../../flowtype";
 import LoadingView from "../widget/LoadingView";
 import EmptyView from "../widget/EmptyView";
+import {Colors} from "../../assets/Attrs";
 import ListFooterView from "../widget/ListFooterView";
 
 type Props = {
   list: Array<ProjectEntity>,
   hasMore: boolean,
   isLoading: boolean,
-  projectListsCallback: (pn: string, popleGroup: string, sicknessStatus: string,
-                        sicknessType: string, searchContent: string) => void
+  projectListsCallback: (pn: number, popleGroup: string, sicknessStatus: string,
+                         sicknessType: string, searchContent: string) => void
 };
 
 let pageSize: number = 0;
@@ -38,9 +39,28 @@ class Project extends Component {
     return (
       <View style={styles.itemBackGround}>
         <View style={styles.itemHeader}>
-          <Text>{item.sickness_name}</Text>
-          <Text>{item.sickness_type}</Text>
+          <View style={[styles.itemHeader, {
+            marginRight: 100
+          }]}>
+            <Text
+              numberOfLines={1}
+            >{item.sickness_name}</Text>
+            <Text style={{marginLeft: 7}}>{item.sickness_type}</Text>
+          </View>
+          <View style={[styles.itemStatusBackGround,
+            {backgroundColor: item.sickness_status ? '#F9B74E' : '#42BD41'},
+            {borderColor: item.sickness_status ? '#F9B74E' : '#42BD41'}]}>
+            <Text style={{fontSize: 9, color: Colors.windowBackgroundColor}}>
+              {item.sickness_status ? "COMPLETE" : "UNDERWAY"}
+            </Text>
+          </View>
+
         </View>
+        <Text
+          numberOfLines={3}
+          style={styles.itemTitle}>{item.experiment_title}</Text>
+        <Text style={{marginTop: 5.5}}>申办方: {item.bid_name}</Text>
+        <Text style={{marginTop: 2}}>研究药物: {item.drug_name}</Text>
       </View>
     )
   };
@@ -54,7 +74,7 @@ class Project extends Component {
 
   _onEndReached = () => {
     const {hasMore} = this.props;
-    if(hasMore) {
+    if (hasMore) {
       pageSize++;
       this.props.projectListsCallback(pageSize, null, null, null, null);
     }
@@ -66,7 +86,7 @@ class Project extends Component {
   };
 
   _itemSeparatorComponent = () => {
-    return <View style={{height: 10, backgroundColor: '#BDBDBD'}}/>
+    return <View style={{height: 10, backgroundColor: Colors.windowBackgroundColor}}/>
   };
 
   render() {
@@ -78,6 +98,7 @@ class Project extends Component {
     } else {
       return (
         <FlatList
+          style={{backgroundColor: Colors.windowBackgroundColor}}
           data={list}
           onRefresh={this._onRefresh}
           keyExtractor={this._keyExtractor}
@@ -96,10 +117,26 @@ class Project extends Component {
 const styles = StyleSheet.create({
   itemBackGround: {
     flex: 1,
-    margin: 15
+    paddingTop: 18,
+    paddingLeft: 18,
+    paddingRight: 18,
+    paddingBottom: 15.5,
+    backgroundColor: Colors.whiteBackgroundColor
+
+  },
+  itemStatusBackGround: {
+    padding: 4,
+    borderRadius: 4,
+    borderWidth: 1,
   },
   itemHeader: {
+    flex: 1,
+    alignItems: 'center',
     flexDirection: 'row'
+  },
+  itemTitle: {
+    marginTop: 10,
+    marginBottom: 5.5
   }
 });
 
